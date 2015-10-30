@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.zhuji.testbluetooth;
+package com.example.zhuji.testbluetooth.util;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -59,7 +59,8 @@ public class SampleGattAttributes {
     public final static UUID UUID_PRESSURE_SENSOR_MEASUREMENT = UUID.fromString(SampleGattAttributes.PRESSURE_SENSOR_MEASUREMENT);
     public final static UUID UUID_POWER_MEASUREMENT = UUID.fromString(SampleGattAttributes.POWER_MEASUREMENT);
 
-    static {
+    static
+    {
         // Sample Services.
         attributes.put("0000180d-0000-1000-8000-00805f9b34fb", "Heart Rate Service");
         attributes.put("0000180a-0000-1000-8000-00805f9b34fb", "Device Information Service");
@@ -68,7 +69,8 @@ public class SampleGattAttributes {
         attributes.put("00002a29-0000-1000-8000-00805f9b34fb", "Manufacturer Name String");
     }
 
-    public static String lookup(String uuid, String defaultName) {
+    public static String lookup(String uuid, String defaultName)
+    {
         String name = attributes.get(uuid);
         return name == null ? defaultName : name;
     }

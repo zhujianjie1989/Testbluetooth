@@ -1,23 +1,17 @@
-package com.example.zhuji.testbluetooth;
+package com.example.zhuji.testbluetooth.service;
 
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCallback;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothManager;
-import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import java.util.List;
-import java.util.UUID;
+import com.example.zhuji.testbluetooth.util.BluetoothGattObject;
 
 public class BluetoothService extends Service {
 
@@ -25,7 +19,7 @@ public class BluetoothService extends Service {
     private BluetoothManager  mBluetoothManager;
     private BluetoothAdapter mBluetoothAdapter;
     private String TAG = "BluetoothService";
-    private BluetoothGattObject  LeftDevice = new BluetoothGattObject(this);
+    private BluetoothGattObject LeftDevice = new BluetoothGattObject(this);
     private BluetoothGattObject  RightDevice = new BluetoothGattObject(this);
 
     public class LocalBinder extends Binder

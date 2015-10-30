@@ -1,15 +1,11 @@
-package com.example.zhuji.testbluetooth;
+package com.example.zhuji.testbluetooth.broadcastreceiver;
 
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import com.example.zhuji.testbluetooth.util.SampleGattAttributes;
 
 /**
  * Created by zhuji on 2015/9/14.
@@ -17,7 +13,7 @@ import java.util.UUID;
 public class MyBroadcastReceiver extends BroadcastReceiver{
     private boolean mConnected =false;
 
-
+    public int[] sensorData = new int[8];
     @Override
     public void onReceive(Context context, Intent intent)
     {
@@ -48,12 +44,14 @@ public class MyBroadcastReceiver extends BroadcastReceiver{
         }
     }
 
-    private void displayData(String data) {
-        if (data != null) {
+    private void displayData(String data)
+    {
+        if (data != null)
+        {
             Log.e("displayData", data);
         }
     }
-    public int[] sensorData = new int[8];
+
     private void displayPressureSensorData(String data) {
         String subdata;
         int iValue;
@@ -106,7 +104,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver{
         }
     }
 
-    private void displayPowerData(String data) {
+    private void displayPowerData(String data)
+    {
         String subdata;
 
         int iValue;

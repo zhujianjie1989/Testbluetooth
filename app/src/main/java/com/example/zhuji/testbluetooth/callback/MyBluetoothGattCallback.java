@@ -1,17 +1,15 @@
-package com.example.zhuji.testbluetooth;
+package com.example.zhuji.testbluetooth.callback;
 
 import android.app.Service;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
 import android.util.Log;
 
-import java.util.List;
-import java.util.UUID;
+import com.example.zhuji.testbluetooth.util.BluetoothGattObject;
+import com.example.zhuji.testbluetooth.util.SampleGattAttributes;
 
 /**
  * Created by zhuji on 2015/9/14.

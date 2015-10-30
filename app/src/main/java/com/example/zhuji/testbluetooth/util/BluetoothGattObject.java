@@ -1,4 +1,4 @@
-package com.example.zhuji.testbluetooth;
+package com.example.zhuji.testbluetooth.util;
 
 import android.app.Service;
 import android.bluetooth.BluetoothDevice;
@@ -6,12 +6,10 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
-import android.bluetooth.BluetoothManager;
-import android.content.Context;
-import android.os.Binder;
 import android.util.Log;
 
-import java.util.HashMap;
+import com.example.zhuji.testbluetooth.callback.MyBluetoothGattCallback;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -23,16 +21,12 @@ public class BluetoothGattObject {
     public Service service ;
     public String TAG = "BluetoothGattObject";
     private MyBluetoothGattCallback myBluetoothGattCallback ;
-
-
-
     private BluetoothGattCharacteristic mNotifyCharacteristic;
     private BluetoothGattCharacteristic mCharacteristicSensor;
     private BluetoothGattCharacteristic mCharacteristicPower;
     private BluetoothGattCharacteristic mCharacteristicControl;
     private BluetoothGattCharacteristic mCharacteristicHeart;
     private BluetoothGattCharacteristic mCharacteristicSampFreq;
-
     public final static UUID UUID_PRESSURE_SENSOR_MEASUREMENT = UUID.fromString(SampleGattAttributes.PRESSURE_SENSOR_MEASUREMENT);
     public final static UUID UUID_POWER_MEASUREMENT =  UUID.fromString(SampleGattAttributes.POWER_MEASUREMENT);
     public final static UUID UUID_CONTROL_SWITCH =  UUID.fromString(SampleGattAttributes.CONTROL_SWITCH);
@@ -106,19 +100,28 @@ public class BluetoothGattObject {
 
             setCharacteristicNotification(mCharacteristicSensor, true);
             try {
-                Thread.sleep(500);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             setCharacteristicNotification(mCharacteristicPower, true);
             try {
-                Thread.sleep(500);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             mCharacteristicControl.setValue(5, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
             mCharacteristicControl.setValue(1, BluetoothGattCharacteristic.FORMAT_UINT8, 1);
-           writeCharacteristic(mCharacteristicControl);
+            writeCharacteristic(mCharacteristicControl);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            mCharacteristicSampFreq.setValue(1, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
+            writeCharacteristic(mCharacteristicSampFreq);
+
+
         }
     }
 

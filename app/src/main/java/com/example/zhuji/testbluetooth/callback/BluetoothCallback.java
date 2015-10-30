@@ -1,4 +1,4 @@
-package com.example.zhuji.testbluetooth;
+package com.example.zhuji.testbluetooth.callback;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
